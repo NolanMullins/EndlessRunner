@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 492570}
   - 61: {fileID: 6152364}
+  - 114: {fileID: 11417040}
   m_Layer: 8
   m_Name: Platform_7x1
   m_TagString: Untagged
@@ -245,6 +246,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 7, y: 1}
+--- !u!114 &11417040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775d8b3fd2a797d42bf1e5d2dabfe3eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformDestructionPoint: {fileID: 0}
 --- !u!212 &21200564
 SpriteRenderer:
   m_ObjectHideFlags: 1

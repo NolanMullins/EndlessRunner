@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
         myBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
-        doubleJump = false;
+        doubleJump = true;
 	}
 	
 	// Update is called once per frame
@@ -32,6 +32,11 @@ public class PlayerController : MonoBehaviour {
         grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
 
         myBody.velocity = new Vector2(moveSpeed, myBody.velocity.y);
+        
+        if (grounded)
+        {
+            doubleJump = false;
+        }
 
         //jumping
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))

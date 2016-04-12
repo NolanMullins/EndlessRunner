@@ -10,6 +10,11 @@ public class PlatformGenerator : MonoBehaviour {
 
     private float platformWidth;
 
+    public float distanceBetweenMin;
+    public float distanceBetweenMax;
+
+    public ObjectPooler objPool;
+
 	// Use this for initialization
 	void Start () {
         platformWidth = platform.GetComponent<BoxCollider2D>().size.x;
@@ -20,8 +25,15 @@ public class PlatformGenerator : MonoBehaviour {
 	    
         if (transform.position.x < generationPoint.position.x)
         {
+            //random num (min, max)
+            distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
+
             transform.position = new Vector3(transform.position.x + platformWidth + distanceBetween, transform.position.y, transform.position.z);
-            Instantiate(platform, transform.position, transform.rotation);
+            //creates an object at a point
+            GameObject obj = objPool.getPooledObject();
+            obj.transform.position = transform.position;
+            obj.transform.rotation = transform.rotation;
+            obj.SetActive(true);
         }
 
 	}

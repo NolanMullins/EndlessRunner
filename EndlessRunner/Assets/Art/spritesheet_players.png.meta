@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 92f226736aa1e6a448c954d4e6b671af
-timeCreated: 1460317456
+timeCreated: 1460479052
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: spritesheet_players_0
     21300002: spritesheet_players_1
+    21300004: spritesheet_players_2
+    21300006: spritesheet_players_3
+    21300008: spritesheet_players_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -52,17 +55,6 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: spritesheet_players_0
-      rect:
-        serializedVersion: 2
-        x: 937
-        y: 1982
-        width: 87
-        height: 45
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
     - name: spritesheet_players_1
       rect:
         serializedVersion: 2
@@ -80,6 +72,83 @@ TextureImporter:
         - {x: 52, y: 10}
         - {x: 52, y: 132}
         - {x: 30, y: 150}
+    - name: spritesheet_players_0
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 1536
+        width: 112
+        height: 156
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -56, y: 156}
+        - {x: -56, y: 29}
+        - {x: -47, y: 0}
+        - {x: 55, y: 0}
+        - {x: 56, y: 2}
+        - {x: 56, y: 156}
+    - name: spritesheet_players_2
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 1280
+        width: 108
+        height: 152
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 152}
+        - {x: -54, y: 137}
+        - {x: -54, y: 33}
+        - {x: -52, y: 31}
+        - {x: -46, y: 0}
+        - {x: 54, y: 0}
+        - {x: 54, y: 142}
+        - {x: 46, y: 152}
+    - name: spritesheet_players_3
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 255
+        width: 109
+        height: 153
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28.5, y: 153}
+        - {x: -54.5, y: 139}
+        - {x: -54.5, y: 29}
+        - {x: -44.5, y: 30}
+        - {x: -41.5, y: 34}
+        - {x: -41.5, y: 30}
+        - {x: -39.5, y: 0}
+        - {x: 52.5, y: 0}
+        - {x: 54.5, y: 9}
+        - {x: 54.5, y: 140}
+        - {x: 35.5, y: 153}
+    - name: spritesheet_players_4
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 0
+        width: 110
+        height: 150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -27, y: 150}
+        - {x: -55, y: 123}
+        - {x: -55, y: 38}
+        - {x: -11, y: 0}
+        - {x: 50, y: 0}
+        - {x: 55, y: 2}
+        - {x: 55, y: 129}
+        - {x: 31, y: 150}
     outline: []
   spritePackingTag: 
   userData: 

@@ -3,21 +3,28 @@ using System.Collections;
 
 public class PlatformGenerator : MonoBehaviour {
 
-    public GameObject platform;
+    public GameObject[] platform;
     public Transform generationPoint;
 
-    public float distanceBetween;
+    private float distanceBetween;
 
-    private float platformWidth;
+    private float[] platformWidth;
 
     public float distanceBetweenMin;
     public float distanceBetweenMax;
 
-    public ObjectPooler objPool;
+    private int platformNum;
+
+    //public ObjectPooler objPool;
 
 	// Use this for initialization
 	void Start () {
-        platformWidth = platform.GetComponent<BoxCollider2D>().size.x;
+        platformWidth = new float[platform.Length];
+        for (int a = 0; a < platform.Length; a++)
+        {
+            platformWidth[a] = platform[a].GetComponent<BoxCollider2D>().size.x;
+        }
+        
 	}
 	
 	// Update is called once per frame
@@ -28,12 +35,16 @@ public class PlatformGenerator : MonoBehaviour {
             //random num (min, max)
             distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
 
-            transform.position = new Vector3(transform.position.x + platformWidth + distanceBetween, transform.position.y, transform.position.z);
+            platformNum = Random.Range(0, platform.Length);
+            transform.position = new Vector3(transform.position.x + platformWidth[platformNum] + distanceBetween, transform.position.y, transform.position.z);
+
             //creates an object at a point
-            GameObject obj = objPool.getPooledObject();
+            Instantiate(platform[platformNum], transform.position, transform.rotation);
+
+            /*GameObject obj = objPool.getPooledObject();
             obj.transform.position = transform.position;
             obj.transform.rotation = transform.rotation;
-            obj.SetActive(true);
+            obj.SetActive(true);*/
         }
 
 	}

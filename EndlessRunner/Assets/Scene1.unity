@@ -218,6 +218,7 @@ Transform:
   m_Children:
   - {fileID: 855203502}
   - {fileID: 1760958152}
+  - {fileID: 1491768679}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &497920280
@@ -444,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4316917329e51347880f7ee57b03db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 8
   jumpForce: 12
   grounded: 0
   doubleJump: 0
@@ -468,6 +469,48 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &1491768678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1491768679}
+  - 61: {fileID: 1491768680}
+  m_Layer: 8
+  m_Name: Catcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1491768679
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1491768678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5.96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 497920279}
+  m_RootOrder: 2
+--- !u!61 &1491768680
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1491768678}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 25, y: 1}
 --- !u!1001 &1719897376
 Prefab:
   m_ObjectHideFlags: 0
@@ -609,12 +652,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd9a1f6898ca6347b4b022804e05e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 163974, guid: 38896503141d39740aa4ba3895389bdf, type: 2}
+  platform:
+  - {fileID: 171120, guid: 64c706c587918414c8820faf4790cb74, type: 2}
+  - {fileID: 154376, guid: 52feb0969a2fa8847aaf7066ad271d62, type: 2}
+  - {fileID: 163974, guid: 38896503141d39740aa4ba3895389bdf, type: 2}
+  - {fileID: 193494, guid: 3c44a827d292e954bb58f2e987b0a2a8, type: 2}
   generationPoint: {fileID: 855203502}
-  distanceBetween: 3
   distanceBetweenMin: 1
-  distanceBetweenMax: 6
-  objPool: {fileID: 1720798692}
+  distanceBetweenMax: 5
 --- !u!4 &1894505546
 Transform:
   m_ObjectHideFlags: 0

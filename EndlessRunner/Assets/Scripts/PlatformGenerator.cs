@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlatformGenerator : MonoBehaviour {
 
-    public GameObject[] platform;
     public Transform generationPoint;
 
     private float distanceBetween;
@@ -15,15 +14,25 @@ public class PlatformGenerator : MonoBehaviour {
 
     private int platformNum;
 
-    //public ObjectPooler objPool;
+    public ObjectPooler[] objPool;
+
+    private float minHeight;
+    public Transform maxHeightPoint;
+    private float maxHeight;
+    public float maxHeightChange;
+    private float heightChange;
+
 
 	// Use this for initialization
 	void Start () {
-        platformWidth = new float[platform.Length];
-        for (int a = 0; a < platform.Length; a++)
+        platformWidth = new float[objPool.Length];
+        for (int a = 0; a < objPool.Length; a++)
         {
-            platformWidth[a] = platform[a].GetComponent<BoxCollider2D>().size.x;
+            platformWidth[a] = objPool[a].pooledObject.GetComponent<BoxCollider2D>().size.x;
         }
+
+        minHeight = transform.position.y;
+        maxHeight = maxHeightPoint.position.y;
         
 	}
 	
@@ -35,16 +44,30 @@ public class PlatformGenerator : MonoBehaviour {
             //random num (min, max)
             distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
 
-            platformNum = Random.Range(0, platform.Length);
-            transform.position = new Vector3(transform.position.x + platformWidth[platformNum] + distanceBetween, transform.position.y, transform.position.z);
+            platformNum = Random.Range(0, objPool.Length);
+
+            //height change
+            heightChange = transform.position.y + Random.Range(maxHeightChange, -maxHeightChange);
+            if (heightChange > maxHeight)
+            {
+                heightChange = maxHeight;
+            }
+            else if (heightChange < minHeight)
+            {
+                heightChange = minHeight;
+            }
+
+            transform.position = new Vector3(transform.position.x + (platformWidth[platformNum]/2.0f) + distanceBetween, heightChange, transform.position.z);
 
             //creates an object at a point
-            Instantiate(platform[platformNum], transform.position, transform.rotation);
+            //Instantiate(platform[platformNum], transform.position, transform.rotation);
 
-            /*GameObject obj = objPool.getPooledObject();
+            GameObject obj = objPool[platformNum].getPooledObject();
             obj.transform.position = transform.position;
             obj.transform.rotation = transform.rotation;
-            obj.SetActive(true);*/
+            obj.SetActive(true);
+
+            transform.position = new Vector3(transform.position.x + (platformWidth[platformNum] / 2.0f), transform.position.y, transform.position.z);
         }
 
 	}

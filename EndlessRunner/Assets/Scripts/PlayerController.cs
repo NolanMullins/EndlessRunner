@@ -33,8 +33,11 @@ public class PlayerController : MonoBehaviour {
     //manager
     public GameManager gameManager;
 
-	// Use this for initialization
-	void Start () {
+    //touch input
+    private int numTouchesLastFrame;
+
+    // Use this for initialization
+    void Start () {
         myBody = GetComponent<Rigidbody2D>();
         //myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
@@ -47,6 +50,7 @@ public class PlayerController : MonoBehaviour {
 
         stoppedJumping = true;
         canDoubleJump = true;
+        numTouchesLastFrame = Input.touchCount;
     }
 	
 	// Update is called once per frame
@@ -66,7 +70,7 @@ public class PlayerController : MonoBehaviour {
         myBody.velocity = new Vector2(moveSpeed, myBody.velocity.y);
 
         //jumping
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || numTouchesLastFrame < Input.touchCount)
         {
             if (grounded)
             {
@@ -84,7 +88,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //holding jump
-        if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stoppedJumping)
+        if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0) || numTouchesLastFrame == Input.touchCount) && !stoppedJumping)
         {
             if (jumpTimeCounter > 0)
             {
@@ -93,11 +97,14 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0) || numTouchesLastFrame > Input.touchCount)
         {
             stoppedJumping = true;
             jumpTimeCounter = 0;
         }
+
+        //touch
+        numTouchesLastFrame = Input.touchCount;
 
         myAnimator.SetFloat("Speed", myBody.velocity.x);
         myAnimator.SetBool("Grounded", grounded);

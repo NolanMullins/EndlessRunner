@@ -13,30 +13,39 @@ public class GameManager : MonoBehaviour {
 
     private ScoreManager theScoreManager;
 
+    public DeathMenu theDeathScreen;
+
 	// Use this for initialization
 	void Start () {
         platformStartPoint = platformGenerator.position;
         playerStartPoint = thePlayer.transform.position;
 
         theScoreManager = FindObjectOfType<ScoreManager>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+        theDeathScreen.gameObject.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+        }
+    }
 
     public void RestartGame()
     {
-        StartCoroutine("RestartGameCo");
-    }
-
-    public IEnumerator RestartGameCo()
-    {
-        //On death
         theScoreManager.onPlayerDeath();
         thePlayer.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2);
+        //StartCoroutine("RestartGameCo");
+
+        theDeathScreen.gameObject.SetActive(true);
+    }
+
+    public void reset()
+    {
+        theDeathScreen.gameObject.SetActive(false);
         platformlist = FindObjectsOfType<PlatformDestroyer>();
         for (int a = 0; a < platformlist.Length; a++)
         {
@@ -48,4 +57,12 @@ public class GameManager : MonoBehaviour {
         platformGenerator.position = platformStartPoint;
         thePlayer.gameObject.SetActive(true);
     }
+
+    /*public IEnumerator RestartGameCo()
+    {
+        //On death
+        
+        yield return new WaitForSeconds(1.25f);
+        
+    }*/
 }

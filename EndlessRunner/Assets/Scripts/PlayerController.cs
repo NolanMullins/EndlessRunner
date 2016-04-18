@@ -36,6 +36,10 @@ public class PlayerController : MonoBehaviour {
     //touch input
     private int numTouchesLastFrame;
 
+    //sounds
+    public AudioSource jumpSound;
+    public AudioSource deathSound;
+
     // Use this for initialization
     void Start () {
         myBody = GetComponent<Rigidbody2D>();
@@ -78,12 +82,14 @@ public class PlayerController : MonoBehaviour {
                 jumpTimeCounter = jumpTime;
                 stoppedJumping = false;
                 canDoubleJump = true;
+                jumpSound.Play();
             } 
             else if (canDoubleJump)
             {
                 myBody.velocity = new Vector2(myBody.velocity.x, jumpForce);
                 stoppedJumping = false;
                 canDoubleJump = false;
+                jumpSound.Play();
             }
         }
 
@@ -114,6 +120,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.gameObject.tag == "killbox")
         {
+            deathSound.Play();
             gameManager.RestartGame();
             moveSpeed = moveSpeedStore;
             speedMileStoneCount = speedMileStoneCountStore;
